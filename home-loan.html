@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>เปรียบเทียบค่างวดบ้าน</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f6;--surface:#fff;--ink:#16233b;--muted:#5d6b7f;--line:#d3dae5;--edge:#e2e7ef;--good:#0f7a4d;--goodbg:#e3f4ec;--int:#d97a00;--prin:#c5cedc;--focus:#3b63e0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e131d;--surface:#172032;--ink:#e8edf6;--muted:#93a1b5;--line:#33405a;--edge:#243049;--good:#3ccf91;--goodbg:#173a2e;--int:#f0a543;--prin:#3a4864;--focus:#7c9bff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e131d;--surface:#172032;--ink:#e8edf6;--muted:#93a1b5;--line:#33405a;--edge:#243049;--good:#3ccf91;--goodbg:#173a2e;--int:#f0a543;--prin:#3a4864;--focus:#7c9bff;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15.5px/1.6 "IBM Plex Sans Thai","Noto Sans Thai",Tahoma,sans-serif}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:is(button,input,select):focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:32px clamp(16px,4vw,40px) 80px}
+h1{font-size:1.6rem;letter-spacing:-.01em;margin:0 0 4px;font-weight:600}
+h2{font-size:1.1rem;font-weight:600;margin:0 0 14px}
+.sub{color:var(--muted);margin:0 0 24px}
+.panel{background:var(--surface);border:1px solid var(--edge);border-radius:14px;padding:20px;margin-bottom:24px;box-shadow:0 1px 2px rgba(22,35,59,.06),0 12px 28px -16px rgba(22,35,59,.18)}
+label{display:block;font-size:.8125rem;font-weight:500;color:var(--muted);margin-bottom:6px}
+.in{display:flex;align-items:center;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:0 12px}
+.in:focus-within{border-color:var(--focus)}
+.in input{flex:1;width:100%;min-width:0;border:0;background:none;padding:9px 0;min-height:40px;outline:none}
+.in span{color:var(--muted);font-size:.85rem;margin-left:8px;white-space:nowrap}
+.row3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
+.row3>*{min-width:0}
+.addbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+select{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-height:40px}
+.addbar select{flex:1;min-width:200px}
+.btn{border:0;background:var(--ink);color:var(--surface);padding:9px 18px;border-radius:10px;font-weight:500;min-height:40px}
+.cfgs{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr))}
+.cfg{border:1px solid var(--edge);border-radius:12px;padding:14px;background:var(--bg)}
+.ch{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.nm{flex:1;min-width:0;font-weight:600;border:1px solid transparent;background:none;border-radius:8px;padding:4px 6px;font-size:1rem}
+.nm:hover{border-color:var(--line)}
+.ico{background:none;border:1px solid var(--line);border-radius:8px;padding:2px 10px;font-size:.8rem;color:var(--muted)}
+.yr{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.yl{width:56px;font-size:.85rem;color:var(--muted);flex:none}
+.yr select{min-height:38px;padding:4px 8px;font-size:.9rem}
+.yr .in{flex:1;min-width:96px}
+.yr .in input{min-height:36px;padding:6px 0}
+.mut{font-size:.85rem;color:var(--muted)}
+.res{flex-basis:100%;font-size:.85rem;font-weight:500;color:var(--good);padding-left:64px}
+.rest .res{padding-left:0}
+.pay{flex:1 1 100%;max-width:calc(100% - 64px);margin-left:64px}
+.add{background:none;border:1px dashed var(--line);border-radius:8px;padding:5px 12px;font-size:.85rem;margin:2px 0 10px;color:var(--ink)}
+.add:disabled{opacity:.4;cursor:default}
+.rest{border-top:1px solid var(--edge);padding-top:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.stat{background:var(--surface);border:1px solid var(--edge);border-radius:12px;padding:14px 16px}
+.stat small{display:block;color:var(--muted);font-size:.8rem}
+.stat b{display:block;font-size:1.25rem;font-weight:600;line-height:1.35;margin-top:2px}
+.stat em{font-style:normal;color:var(--muted);font-size:.8rem}
+.tw{overflow-x:auto;border:1px solid var(--edge);border-radius:12px;background:var(--surface);margin-bottom:24px}
+table{border-collapse:collapse;width:100%;min-width:480px}
+th,td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--edge);vertical-align:top}
+th:first-child,td:first-child{text-align:left;color:var(--muted);font-size:.85rem;white-space:nowrap;position:sticky;left:0;background:var(--surface)}
+thead th{font-weight:600;font-size:.9rem;vertical-align:bottom}
+td b{display:block;font-weight:600}
+td small{display:block;color:var(--muted);font-size:.78rem;line-height:1.4}
+td.low{background:var(--goodbg)}
+td.low b{color:var(--good)}
+tfoot td{border-bottom:0}
+.sec{margin:0 0 12px}
+.legend{display:flex;gap:16px;font-size:.8rem;color:var(--muted);margin:0 0 12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+ol{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.b{background:var(--surface);border:1px solid var(--edge);border-radius:12px;padding:14px 18px}
+.b.best{border-color:var(--good);box-shadow:0 0 0 1px var(--good)}
+.top{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap}
+.rk{width:26px;height:26px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:.8rem;font-weight:600;flex:none}
+.best .rk{background:var(--good);color:var(--surface)}
+.tag{font-size:.75rem;font-weight:600;color:var(--good);border:1px solid var(--good);border-radius:999px;padding:0 10px}
+.amt{margin-left:auto;font-size:1.3rem;font-weight:600;white-space:nowrap}
+.amt small{font-size:.8rem;font-weight:400;color:var(--muted)}
+.bar{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--edge);margin:12px 0 8px}
+.bar i{display:block;height:100%}
+.bar .p{background:var(--prin)}.bar .t{background:var(--int)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:.85rem;color:var(--muted)}
+.meta .diff{margin-left:auto;font-weight:500;color:var(--ink)}
+.empty{text-align:center;color:var(--muted);padding:28px 8px;border:1px dashed var(--line);border-radius:12px}
+.disc{font-size:.8rem;color:var(--muted);margin-top:20px}
+@media (max-width:720px){.row3{grid-template-columns:1fr 1fr}.row3>:first-child{grid-column:1/-1}.stats{grid-template-columns:1fr}}
+@media (max-width:520px){.amt{margin-left:0;width:100%}.meta .diff{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>เปรียบเทียบค่างวดบ้าน</h1>
+<p class="sub">เลือกธนาคารที่อยากเทียบ ตั้งอัตราดอกเบี้ยแต่ละปีของแต่ละธนาคาร แล้วดูผลเทียบกันทีละปี</p>
+
+<section class="panel">
+ <h2>ข้อมูลสินเชื่อ</h2>
+ <div class="row3">
+  <div><label for="price">ราคาบ้าน</label><div class="in"><input id="price" inputmode="numeric" value="3,000,000"><span>บาท</span></div></div>
+  <div><label for="down">เงินดาวน์</label><div class="in"><input id="down" inputmode="decimal" value="10"><span>%</span></div></div>
+  <div><label for="years">ผ่อนนาน</label><div class="in"><input id="years" inputmode="numeric" value="20"><span>ปี</span></div></div>
+ </div>
+</section>
+
+<section class="panel">
+ <h2>ธนาคารที่จะเปรียบเทียบ</h2>
+ <div class="addbar"><select id="pick" aria-label="เลือกธนาคาร"></select><button class="btn" id="add">+ เพิ่มธนาคาร</button></div>
+ <div class="cfgs" id="cfgs"></div>
+</section>
+
+<section id="out"></section>
+<p class="disc">คำนวณแบบผ่อนเท่ากันทุกงวด เมื่อเปลี่ยนอัตราดอกเบี้ยในปีใหม่จะคิดค่างวดใหม่จากเงินต้นคงเหลือ ตัวเลขเป็นการประมาณการเพื่อเปรียบเทียบเท่านั้น ตั้งค่า MRR ตามตารางเดือนตุลาคม 2569 และถือว่า MRR ไม่เปลี่ยนตลอดสัญญา เงื่อนไขจริงของแต่ละธนาคารต่างกัน ควรตรวจสอบกับธนาคารอีกครั้ง</p>
+</div>
+<script>
+const B=[["ธนาคารออมสิน",6.045],["ธนาคารอาคารสงเคราะห์ (ธอส.)",6.145],["ธนาคารกรุงเทพ",6.5],["ธนาคารไทยพาณิชย์ (SCB)",6.575],["ธนาคารกสิกรไทย (KBank)",6.58],["ธนาคารกรุงศรีอยุธยา",6.67],["ธนาคารกรุงไทย (KTB)",6.845],["ธนาคารทหารไทยธนชาต (ttb)",7.105],["ธนาคารเกียรตินาคินภัทร",7.4],["ธนาคารยูโอบี (UOB)",8.075],["ธนาคารซีไอเอ็มบี ไทย (CIMBT)",8.525]];
+const KEY="homeloan.v3",IDS=["price","down","years"];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const num=v=>{const n=parseFloat(String(v).replace(/,/g,""));return isFinite(n)?n:0};
+const baht=n=>Math.round(n).toLocaleString("th-TH");
+const dur=m=>`${Math.floor(m/12)} ปี${m%12?` ${m%12} เดือน`:""}`;
+const uid=()=>Math.random().toString(36).slice(2,8);
+const mk=(name,mrr,from)=>({id:uid(),name,mrr:String(mrr),ys:from?from.ys.map(y=>({...y})):[{t:"fix",v:"3",cap:"",p:""}],rest:from?from.rest:"0"});
+let banks=[];
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&Array.isArray(s.banks)){banks=s.banks;IDS.forEach(k=>{if(s[k]!=null)$(k).value=s[k]})}}catch(e){}
+if(!banks.length){banks=[mk(B[0][0],B[0][1])];banks.push(mk(B[1][0],B[1][1],banks[0]))}
+$("pick").innerHTML=B.map((b,i)=>`<option value="${i}">${b[0]} (MRR ${b[1]}%)</option>`).join("")+'<option value="x">อื่นๆ (ตั้งชื่อและ MRR เอง)</option>';
+
+const pm=(P,r,k)=>k<=0?0:(r?P*r/(1-Math.pow(1+r,-k)):P/k);
+function rateFor(b,y){
+ const mrr=num(b.mrr),r=b.ys[Math.min(y,b.ys.length)-1];
+ if(!r)return Math.max(0,mrr);
+ if(r.t==="fix")return Math.max(0,num(r.v));
+ 
+ return Math.max(0,mrr-num(r.v));
+}
+function loanInfo(){
+ const price=num($("price").value),down=Math.min(100,Math.max(0,num($("down").value))),years=Math.max(1,Math.min(40,Math.round(num($("years").value))||1));
+ return{loan:price*(1-down/100),years,down}
+}
+function sim(b,loan,years){
+ const n=years*12;let bal=loan,total=0,months=0,short=0;const yrs=[];
+ for(let y=1;y<=years;y++){
+  const row=b.ys[Math.min(y,b.ys.length)-1],rate=rateFor(b,y),r=rate/1200;
+  if(bal<=0.5){yrs.push({rate,m:0,int:0,done:true});continue}
+  const m=num(row.p)>0?num(row.p):pm(bal,r,n-(y-1)*12);let intY=0;
+  for(let i=0;i<12&&bal>0.5;i++){
+   const it=bal*r,last=(y-1)*12+i+1===n,pay=last?bal+it:Math.min(m,bal+it);
+   if(last&&pay-m>1)short=pay-m;
+   bal=bal+it-pay;intY+=it;total+=pay;months++}
+  yrs.push({rate,m,int:intY,done:false})}
+ return{yrs,total,int:total-loan,months,short}
+}
+
+function cfgHTML(b){
+ const k=b.ys.length;
+ const rows=b.ys.map((y,j)=>`<div class="yr" data-j="${j}"><span class="yl">ปีที่ ${j+1}${j===k-1?'<small class="mut" style="display:block;line-height:1.2">เป็นต้นไป</small>':""}</span>
+  <select data-t aria-label="ประเภทอัตรา ปีที่ ${j+1}"><option value="fix"${y.t==="fix"?" selected":""}>คงที่</option><option value="mrr"${y.t==="mrr"?" selected":""}>MRR −</option></select>
+  <div class="in"><input data-v inputmode="decimal" value="${esc(y.v)}" aria-label="อัตรา ปีที่ ${j+1}"><span>${y.t==="mrr"?"ลบ %":"%"}</span></div>
+  
+  ${j===k-1&&k>1?`<button class="ico" data-rmy aria-label="ลบปีที่ ${k}">✕</button>`:""}${y.t==="mrr"?`<span class="res" data-res="${j}"></span>`:""}<div class="in pay"><input data-p inputmode="numeric" placeholder="ค่างวดตามธนาคาร (ไม่ใส่ = คำนวณให้)" value="${esc(y.p||"")}" aria-label="ค่างวด ปีที่ ${j+1}"><span>บาท</span></div></div>`).join("");
+ return`<div class="cfg" data-id="${b.id}"><div class="ch"><input class="nm" data-name value="${esc(b.name)}" aria-label="ชื่อธนาคาร"><button class="ico" data-rm>ลบ</button></div>
+ <label>MRR ของธนาคารนี้</label><div class="in" style="margin-bottom:12px"><input data-mrr inputmode="decimal" value="${esc(b.mrr)}"><span>% ต่อปี</span></div>
+ ${rows}
+ <button class="add" data-addy${k>=10?" disabled":""}>+ เพิ่มปีที่ ${k+1}</button>
+ </div>`;
+}
+function buildCfg(){$("cfgs").innerHTML=banks.map(cfgHTML).join("")}
+
+function updRes(){banks.forEach(b=>{const c=document.querySelector(`.cfg[data-id="${b.id}"]`);if(!c)return;
+ c.querySelectorAll("[data-res]").forEach(s=>{const rest=s.dataset.res==="rest",j=+s.dataset.res,y=rest?b.ys.length+1:j+1,x=rest?num(b.rest):num(b.ys[j].v);
+  const capped=false;
+  s.textContent=`MRR ${num(b.mrr)} − ${x} = ${rateFor(b,y).toFixed(3)}%${capped?" (ติดเพดาน)":""}`})})}
+function render(){
+ const{loan,years,down}=loanInfo(),out=$("out");updRes();
+ try{const o={banks};IDS.forEach(k=>o[k]=$(k).value);localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}
+ if(!banks.length){out.innerHTML='<div class="empty">ยังไม่ได้เลือกธนาคาร เลือกจากรายการด้านบนแล้วกด “+ เพิ่มธนาคาร”</div>';return}
+ if(!(loan>0)){out.innerHTML='<div class="empty">ใส่ราคาบ้านเพื่อเริ่มคำนวณ</div>';return}
+ const S=banks.map(b=>({b,...sim(b,loan,years)})).sort((a,c)=>a.int-c.int);
+ const minI=S[0].int,maxI=S[S.length-1].int,maxT=Math.max(...S.map(s=>s.total));
+ const Kmax=Math.max(...banks.map(b=>b.ys.length)),R=Math.min(years,Kmax);
+ let h=`<div class="stats"><div class="stat"><small>ยอดกู้ (หลังหักเงินดาวน์ ${down}%)</small><b>฿${baht(loan)}</b><em>ผ่อน ${years} ปี</em></div>
+ <div class="stat"><small>ดอกเบี้ยรวมต่ำสุด</small><b>฿${baht(minI)}</b><em>${esc(S[0].b.name)}</em></div>
+ <div class="stat"><small>${S.length>1?"ส่วนต่างดอกเบี้ย ถูกสุดกับแพงสุด":"ค่างวดปีแรก"}</small><b>฿${baht(S.length>1?maxI-minI:S[0].yrs[0].m)}</b><em>${S.length>1?"ตลอดสัญญา":esc(S[0].b.name)}</em></div></div>`;
+ h+=`<h2>เทียบกันทีละปี (ค่างวดต่อเดือน)</h2><div class="tw"><table><thead><tr><th></th>${S.map(s=>`<th>${esc(s.b.name)}</th>`).join("")}</tr></thead><tbody>`;
+ for(let y=1;y<=R;y++){
+  const ms=S.map(s=>s.yrs[y-1].m).filter(m=>m>0),low=Math.round(Math.min(...ms));
+  h+=`<tr><td>${y===R&&R<years?`ปีที่ ${y} เป็นต้นไป`:`ปีที่ ${y}`}</td>`+S.map(s=>{const c=s.yrs[y-1],p=y>1?s.yrs[y-2]:null,d=p&&p.m>0&&c.m>0?Math.round(c.m-p.m):0;if(c.done)return'<td><b>—</b><small>ผ่อนหมดแล้ว</small></td>';
+   return`<td class="${S.length>1&&Math.round(c.m)===low?"low":""}"><b>฿${baht(c.m)}</b><small>${c.rate.toFixed(3)}%${d?` · ${d>0?"▲":"▼"} ฿${baht(Math.abs(d))}`:""}</small></td>`}).join("")+"</tr>";
+ }
+ h+=`</tbody><tfoot><tr><td>ดอกเบี้ยรวม</td>${S.map(s=>`<td class="${S.length>1&&s.int===minI?"low":""}"><b>฿${baht(s.int)}</b></td>`).join("")}</tr><tr><td>จ่ายรวม</td>${S.map(s=>`<td><b>฿${baht(s.total)}</b></td>`).join("")}</tr><tr><td>ผ่อนหมดภายใน</td>${S.map(s=>`<td><b>${dur(s.months)}</b></td>`).join("")}</tr></tfoot></table></div>`;
+ h+=`<h2 class="sec">จัดอันดับตามดอกเบี้ยรวม</h2><div class="legend"><span><i style="background:var(--prin)"></i>เงินต้น</span><span><i style="background:var(--int)"></i>ดอกเบี้ยรวมตลอดสัญญา</span></div><ol>`+S.map((s,i)=>{const low=s.int===minI;
+  return`<li class="b${low&&S.length>1?" best":""}"><div class="top"><span class="rk">${i+1}</span><b>${esc(s.b.name)}</b>${low&&S.length>1?'<span class="tag">ดอกเบี้ยรวมต่ำสุด</span>':""}<span class="amt">฿${baht(s.int)} <small>ดอกเบี้ยรวม</small></span></div>
+  <div class="bar" role="img" aria-label="เงินต้น ${baht(loan)} บาท ดอกเบี้ย ${baht(s.int)} บาท"><i class="p" style="width:${loan/maxT*100}%"></i><i class="t" style="width:${s.int/maxT*100}%"></i></div>
+  <div class="meta"><span>ค่างวดปีที่ 1 ฿${baht(s.yrs[0].m)}</span><span>ผ่อนหมดใน ${dur(s.months)}</span>${s.short>1?`<span style="color:var(--int)">ยอดค้างตอนครบสัญญา ฿${baht(s.short)}</span>`:""}<span>จ่ายรวม ฿${baht(s.total)}</span>${S.length>1?`<span class="diff">${low?"ดอกเบี้ยน้อยที่สุด":`มากกว่าที่ถูกสุด ฿${baht(s.int-minI)}`}</span>`:""}</div></li>`}).join("")+"</ol>";
+ out.innerHTML=h;
+}
+
+const find=el=>banks.find(b=>b.id===el.closest(".cfg").dataset.id);
+$("cfgs").addEventListener("input",e=>{
+ const t=e.target,b=find(t);if(!b)return;const yr=t.closest(".yr"),y=yr&&yr.dataset.j!=null?b.ys[+yr.dataset.j]:null;
+ if("name" in t.dataset)b.name=t.value;else if("mrr" in t.dataset)b.mrr=t.value;else if("rest" in t.dataset)b.rest=t.value;
+ else if(y&&"v" in t.dataset)y.v=t.value;else if(y&&"p" in t.dataset)y.p=t.value;
+ render();
+});
+$("cfgs").addEventListener("change",e=>{
+ const t=e.target;if(!("t" in t.dataset))return;
+ const b=find(t),y=b.ys[+t.closest(".yr").dataset.j];y.t=t.value;if(y.t==="fix"&&String(y.v).trim()==="")y.v="3";buildCfg();render();
+});
+$("cfgs").addEventListener("click",e=>{
+ const t=e.target.closest("button");if(!t)return;const b=find(t);if(!b)return;
+ if("rm" in t.dataset)banks=banks.filter(x=>x!==b);
+ else if("addy" in t.dataset){const l=b.ys[b.ys.length-1];if(b.ys.length<10)b.ys.push({...l,p:""})}
+ else if("rmy" in t.dataset)b.ys.pop();
+ else return;
+ buildCfg();render();
+});
+$("add").onclick=()=>{
+ const v=$("pick").value,from=banks[banks.length-1],nb=v==="x"?mk("ธนาคารอื่น",6,from):mk(B[+v][0],B[+v][1],from);
+ banks.push(nb);buildCfg();render();
+};
+IDS.forEach(id=>$(id).addEventListener("input",render));
+$("price").addEventListener("blur",e=>{const n=num(e.target.value);if(n)e.target.value=n.toLocaleString("en-US")});
+buildCfg();render();
+</script>
+</body>
+</html>
